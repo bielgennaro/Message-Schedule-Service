@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  msgId: 1
+  textMsg: MyText
+  createDate: 2024-04-18 04:28:32
+  scheduleDate: 2024-04-18 04:28:32
+  whatsappNumber: MyString
+
+two:
+  msgId: 1
+  textMsg: MyText
+  createDate: 2024-04-18 04:28:32
+  scheduleDate: 2024-04-18 04:28:32
+  whatsappNumber: MyString

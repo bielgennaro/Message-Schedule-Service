@@ -16,6 +16,8 @@ gem "pg", "~> 1.5.6"
 
 gem "whenever"
 
+gem 'rack-cors'
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 

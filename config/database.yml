@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  database: message_scheduler_development
+  database: postgres
   username: postgres
   password: root
   host: localhost

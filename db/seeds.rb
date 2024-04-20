@@ -8,3 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 #
+
+["Pepe", "Jane", "John", "Jane"].each do |name|
+  User.find_or_create_by!(name: name, surname: "teste", email: name.downcase.gsub(" ", "_") + "@example.com", phone: "1234567890", gender: 1, password: "password")
+end
+
+Message.find_or_create_by!(msgId: 1, textMsg: "Hello, World!", scheduleDate: Time.now, createDate: Time.now, whatsappNumber: "1234567890", status: 0)

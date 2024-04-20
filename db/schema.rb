@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_233451) do
     t.datetime "scheduleDate"
     t.string "whatsappNumber"
     t.integer "status"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -13,4 +13,6 @@
   User.find_or_create_by!(name: name, surname: "teste", email: name.downcase.gsub(" ", "_") + "@example.com", phone: "1234567890", gender: 1, password: "password")
 end
 
-Message.find_or_create_by!(msgId: 1, textMsg: "Hello, World!", scheduleDate: Time.now, createDate: Time.now, whatsappNumber: "1234567890", status: 0)
+["Olá tudo bem?", "Gostaria de saber sobre seu produto", "Qual o valor do produto?", "O produto está disponível?"].each do |content|
+  Message.find_or_create_by!(textMsg: content, status: 1, user_id: User.first.id, scheduleDate: Time.now, createDate: Time.now, whatsappNumber: "1234567890")
+end

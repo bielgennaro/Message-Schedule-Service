@@ -4,14 +4,16 @@ class Api::AuthController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:user][:name])
+    user_params = params.require(:user).permit(:email, :password)
 
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      redirect_to root_path
+    user = User.find_by(email: user_params[:email])
+
+    if @user && @user.password == user_params[:password]
+      cookies[:user_id] = @user.id
+      render json: @user, status: :ok
     else
-      flash[:alert] = "Login failed"
-      redirect_to new_user_session_path
+      flash.now[:alert] = 'Invalid email or password'
+      render :new
     end
   end
 end

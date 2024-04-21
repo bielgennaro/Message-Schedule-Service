@@ -12,15 +12,14 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_04_19_233451) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
-    t.integer "msgId", null: false
-    t.text "textMsg"
-    t.datetime "createDate", null: false
-    t.datetime "2024-04-21 06:19:54 -0300", null: false
-    t.datetime "scheduleDate"
-    t.string "whatsappNumber", limit: 11
+    t.text "textMsg", null: false
+    t.datetime "createDate", default: "2024-04-21 21:13:11"
+    t.datetime "scheduleDate", null: false
+    t.string "whatsappNumber", limit: 11, null: false
     t.integer "status"
     t.integer "user_id"
   end

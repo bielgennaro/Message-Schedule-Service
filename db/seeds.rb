@@ -10,9 +10,9 @@
 #
 
 ["Pepe", "Jane", "John", "Jane"].each do |name|
-  User.find_or_create_by!(name: name, surname: "teste", email: name.downcase.gsub(" ", "_") + "@example.com", phone: "1234567890", gender: 1, password: "password")
+  User.find_or_create_by!(name: name, surname: "teste", email: name.downcase.gsub(" ", "_") + "@example.com", phone: "1234567890", password: "password")
 end
 
 ["Olá tudo bem?", "Gostaria de saber sobre seu produto", "Qual o valor do produto?", "O produto está disponível?"].each do |content|
-  Message.find_or_create_by!(textMsg: content, status: 1, user_id: User.first.id, scheduleDate: Time.now, createDate: Time.now, whatsappNumber: "1234567890")
+  Message.find_or_create_by!(textMsg: content, user_id: User.first.id, scheduleDate: Time.now.strftime('%Y-%m-%d %H:%M:%S'), createDate: Time.now.strftime('%Y-%m-%d %H:%M:%S'), whatsappNumber: "1234567890")
 end

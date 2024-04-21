@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
     @users = User.all
 
@@ -6,12 +8,14 @@ class Api::UsersController < ApplicationController
   end
 
   def create
+    user_params = params.require(:user).permit(:name, :surname, :email, :password, :phone)
+
     @users = User.new(user_params)
 
     if @users.save then
-      render json: @users, status: :created
+      render json: @users, status: :ok
     else
-      render json: @users.errors, status: :error
+      render json: @users.errors
     end
 
     def destroy
@@ -21,12 +25,6 @@ class Api::UsersController < ApplicationController
       else
         head(:unprocessable_entity)
       end
-    end
-
-    private
-
-    def user_params
-      params.require(:user).permit(:name, :email, :password)
     end
   end
 end

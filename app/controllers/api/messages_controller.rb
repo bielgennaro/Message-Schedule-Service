@@ -1,4 +1,6 @@
 class Api::MessagesController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
     @messages = Message.all
 
@@ -6,14 +8,16 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
+    message_params = params.require(:message).permit(:textMsg, :scheduleDate, :whatsappNumber)
+
     @message = Message.new(message_params)
 
     if @message.save then
       render json: @message, status: :created
       @message.status = :pending
     else
-      render json: @message.errors, status: :error
-      @message.status = :failed
+      render json: @message.errors
+      @message.status = :schedule_fail
     end
 
     def destroy
@@ -23,12 +27,6 @@ class Api::MessagesController < ApplicationController
       else
         head(:unprocessable_entity)
       end
-    end
-
-    private
-
-    def message_params
-      params.require(:message).permit(:msgId, :textMsg, :scheduleDate, :createDate, :whatsappNumber)
     end
   end
 end

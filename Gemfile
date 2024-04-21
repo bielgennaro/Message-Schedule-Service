@@ -14,6 +14,8 @@ gem "puma", ">= 5.0"
 # Use postgres as default database
 gem "pg", "~> 1.5.6"
 
+gem 'bcrypt', '~> 3.1.7'
+
 gem "whenever"
 
 gem 'rack-cors'
